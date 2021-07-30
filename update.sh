@@ -1,7 +1,6 @@
-npmUpdate=`npm update`
-npmAuditFix=`npm audit fix`
-npmAudit=`npm audit`
 timestamp=$(date +%s)
+ncuOutput=ncu -u
+npm install
 branch=npm-update-$timestamp
 
 if [[ -z $(git status -s) ]]
@@ -13,8 +12,9 @@ else
   git add package-lock.json
   git commit -m "auto update"
   git push --set-upstream origin $branch
-  pullrequest=`gh pr create --title "Auto update" --body "# npm update: $npmUpdate # Audit Fix: $npmAuditFix # after audit: $npmAudit" --assignee Arjen-Smit --head $branch --label "Package update"`
+  pullrequest=`gh pr create --title "Auto update" --body "$ncuOutput" --assignee Arjen-Smit --head $branch --label "Package update"`
 
   echo $pullrequest
+  open $pullrequest
   exit
 fi
