@@ -17,8 +17,10 @@ else
   echo $pullrequest
   open $pullrequest
 
+  json=`printf '{ "status":"npm update", "repositoryId":1, "pullrequestUrl":"%s"}\n' "$pullrequest"`
+
   curl -X POST  https://personal-otzwqrko.outsystemscloud.com/Hackathon/rest/hackathon/CreateUpdate \
   -H 'Content-Type: application/json' \
-  -d '{ "status":"npm update", "repositoryId":1, "pullrequestUrl":"${pullrequest}"}'
+  -d $json
   exit
 fi
