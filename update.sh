@@ -14,13 +14,14 @@ else
   git push --set-upstream origin $branch
   pullrequest=`gh pr create --title "Auto update" --body "$ncuOutput" --assignee Arjen-Smit --head $branch --label "Package update"`
 
-  echo $pullrequest
-  open $pullrequest
-
-  json=`printf '{ "status":"npm update", "repositoryId":1, "pullrequestUrl":"%s"}\n' "$pullrequest"`
+  json=`printf '{ "status":"npm update", "repositoryId": 1, "pullrequestUrl":"%s"}' "$pullrequest"`
 
   curl -X POST  https://personal-otzwqrko.outsystemscloud.com/Hackathon/rest/hackathon/CreateUpdate \
   -H 'Content-Type: application/json' \
-  -d $json
+  -d "${json}"
+
+  git checkout master;
   exit
 fi
+
+
