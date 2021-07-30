@@ -1,4 +1,5 @@
 npm update
+npm audit fix
 timestamp=$(date +%s)
 branch=npm-update-$timestamp
 
