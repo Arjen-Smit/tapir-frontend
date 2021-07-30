@@ -1,5 +1,5 @@
 timestamp=$(date +%s)
-ncuOutput=ncu -u
+ncuOutput=`ncu -u`
 npm install
 branch=npm-update-$timestamp
 
