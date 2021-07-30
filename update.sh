@@ -13,7 +13,7 @@ else
   git add package-lock.json
   git commit -m "auto update"
   git push --set-upstream origin $branch
-  pullrequest=`gh pr create --title "Auto update" --body "###npm update: \n$npmUpdate\n\n##Audit Fix:\n $npmAuditFix\n\n###after audit:\n$npmAudit" --assignee Arjen-Smit --head $branch --label "Package update"`
+  pullrequest=`gh pr create --title "Auto update" --body "# npm update: $npmUpdate # Audit Fix: $npmAuditFix # after audit: $npmAudit" --assignee Arjen-Smit --head $branch --label "Package update"`
 
   echo $pullrequest
   exit
