@@ -19,6 +19,6 @@ else
 
   curl -X POST  https://personal-otzwqrko.outsystemscloud.com/Hackathon/rest/hackathon/CreateUpdate \
   -H 'Content-Type: application/json' \
-  -d '{ "status":"npm update", "repositoryId":1, "pullrequestUrl":"$pullrequest"}'
+  -d '{ "status":"npm update", "repositoryId":1, "pullrequestUrl":"${pullrequest}"}'
   exit
 fi
